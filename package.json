@@ -1,0 +1,1 @@
+{"name":"betodev-studio-final","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"dependencies":{"vite":"latest","react":"latest","react-dom":"latest","gsap":"latest","lenis":"latest","@vitejs/plugin-react":"latest"}}
