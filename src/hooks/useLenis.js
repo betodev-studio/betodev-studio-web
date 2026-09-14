@@ -1,26 +1,25 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
-export function useLenis(){
-
-  useEffect(()=>{
-
+export function useLenis() {
+  useEffect(() => {
     const lenis = new Lenis({
-      duration:1.2,
-      smoothWheel:true
+      duration: 1.2,
+      smoothWheel: true,
     })
 
-    function raf(time){
+    let animationFrame
+
+    const raf = (time) => {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      animationFrame = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    animationFrame = requestAnimationFrame(raf)
 
-    return ()=>{
+    return () => {
+      cancelAnimationFrame(animationFrame)
       lenis.destroy()
     }
-
-  },[])
-
+  }, [])
 }
