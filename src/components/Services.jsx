@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { gsap } from '../motion/gsap'
+import { createRevealAnimation } from '../motion/animations'
 
 const services = [
   {
@@ -36,16 +36,12 @@ export default function Services(){
 
   useEffect(() => {
 
-    gsap.from('.service-card', {
-      scrollTrigger: {
-        trigger: '.services-grid',
-        start: 'top 80%'
-      },
+    createRevealAnimation({
+      trigger: '.services-grid',
+      target: '.service-card',
       y: 70,
-      opacity: 0,
-      stagger: 0.15,
       duration: 1,
-      ease: 'power4.out'
+      stagger: 0.15
     })
 
   }, [])

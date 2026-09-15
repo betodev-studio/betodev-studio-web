@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { gsap } from '../motion/gsap'
+import { createRevealAnimation } from '../motion/animations'
 
 const projects = [
   {
@@ -32,16 +32,12 @@ export default function Projects(){
 
   useEffect(() => {
 
-    gsap.from('.project-item', {
-      scrollTrigger: {
-        trigger: '.projects-list',
-        start: 'top 80%'
-      },
+    createRevealAnimation({
+      trigger: '.projects-list',
+      target: '.project-item',
       y: 80,
-      opacity: 0,
-      stagger: 0.18,
       duration: 1.1,
-      ease: 'power4.out'
+      stagger: 0.18
     })
 
   }, [])

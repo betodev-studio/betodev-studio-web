@@ -1,19 +1,15 @@
 import { useEffect } from 'react'
-import { gsap } from '../motion/gsap'
+import { createRevealAnimation } from '../motion/animations'
 
 export default function Footer(){
 
   useEffect(() => {
 
-    gsap.from('.contact-content', {
-      scrollTrigger: {
-        trigger: '.contact',
-        start: 'top 80%'
-      },
+    createRevealAnimation({
+      trigger: '.contact',
+      target: '.contact-content',
       y: 70,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power4.out'
+      duration: 1.2
     })
 
   }, [])

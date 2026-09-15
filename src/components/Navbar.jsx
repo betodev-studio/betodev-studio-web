@@ -1,17 +1,11 @@
-import { useEffect } from 'react'
-import { gsap } from '../motion/gsap'
+import { useGSAPAnimation } from '../hooks/useGSAPAnimation'
+import { createNavbarAnimation } from '../motion/animations'
 
 export default function Navbar() {
 
-  useEffect(() => {
-    gsap.from('.navbar', {
-      y: -30,
-      opacity: 0,
-      duration: 1,
-      delay: 0.3,
-      ease: 'power3.out'
-    })
-  }, [])
+  useGSAPAnimation(() => {
+    createNavbarAnimation()
+  })
 
   return (
     <nav className="navbar">

@@ -1,15 +1,23 @@
-import { useEffect } from 'react'
-import { reveal, revealScale } from '../motion/animations'
+import { useGSAPAnimation } from '../hooks/useGSAPAnimation'
+import {
+  createRevealAnimation,
+  createScaleAnimation
+} from '../motion/animations'
 
 export default function Manifesto(){
 
-  useEffect(() => {
-    reveal('.manifesto-content')
-    revealScale('.manifesto-mark')
-  }, [])
+  const scope = useGSAPAnimation(() => {
+    createRevealAnimation({
+      trigger: '.manifesto-content'
+    })
+
+    createScaleAnimation({
+      trigger: '.manifesto-mark'
+    })
+  })
 
   return (
-    <section id="manifesto" className="manifesto">
+    <section id="manifesto" className="manifesto" ref={scope}>
 
       <div className="manifesto-grid">
 

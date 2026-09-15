@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
-import { reveal } from '../motion/animations'
+import { useGSAPAnimation } from '../hooks/useGSAPAnimation'
+import { createRevealAnimation } from '../motion/animations'
 
 export default function Hero(){
 
-  useEffect(()=>{
-    reveal('.hero-content')
-  },[])
+  const scope = useGSAPAnimation(() => {
+    createRevealAnimation({
+      trigger: '.hero-content'
+    })
+  })
 
   return (
-    <section id="inicio" className="hero">
+    <section id="inicio" className="hero" ref={scope}>
 
       <div className="hero-content">
 
